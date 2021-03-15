@@ -43,7 +43,6 @@ public class CompassView extends View {
     private int textHeight;
     int fontSize = 30;
 
-
     int[] borderGradientColors;
     float[] borderGradientPositions;
     int[] glassGradientColors;
@@ -287,8 +286,8 @@ public class CompassView extends View {
             CompassDirection cd = CompassDirection.values()[(int) (i / 22.5)];
             String headString = cd.toString();
             float headStringWidth = textPaint.measureText(headString);
-            PointF headStringCenter = new PointF(center.x - headStringWidth / 2,
-                    boundingBox.top + 1 + textHeight);
+            PointF headStringCenter = new PointF(center.x - headStringWidth/2,
+                    boundingBox.top - 5 + textHeight);
 
             if (i % increment == 0)
                 canvas.drawText(headString, headStringCenter.x, headStringCenter.y, textPaint);

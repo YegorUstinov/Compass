@@ -24,7 +24,7 @@ public class CompassActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        compassView = new CompassView(this);
+        compassView = (CompassView) findViewById(R.id.compassView);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         String windoSrvc = Context.WINDOW_SERVICE;
