@@ -71,13 +71,23 @@ public class CompassActivity extends AppCompatActivity {
         return values;
     }
 
+    // low pass filter
+    static final float ALFA = 0.01f;
+    protected float[] LowPass(float[] input, float[] output) {
+        if (output == null) return input;
+        for (int i = 0; i < input.length; i++) {
+            output[i] = output[i] + ALFA * (input[i] - output[i]);
+        }
+        return output;
+    }
+
     private final SensorEventListener sensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
             if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
-                aValue = event.values;
+                aValue = LowPass(event.values, aValue);
             if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
-                mValue = event.values;
+                mValue = LowPass(event.values, mValue);
             updateOrientation(calculateOrientation());
         }
 
