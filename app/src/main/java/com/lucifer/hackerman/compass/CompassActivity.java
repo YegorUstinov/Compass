@@ -73,6 +73,7 @@ public class CompassActivity extends AppCompatActivity {
 
     // low pass filter
     static final float ALFA = 0.01f;
+
     protected float[] LowPass(float[] input, float[] output) {
         if (output == null) return input;
         for (int i = 0; i < input.length; i++) {
@@ -94,8 +95,8 @@ public class CompassActivity extends AppCompatActivity {
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }
-    };
 
+    };
 
     private void updateOrientation(float[] values) {
         if (compassView != null) {
